@@ -17,4 +17,4 @@ done
 
 
 rm -f assignment3.zip
-zip -r assignment3.zip . -x "*.git" "*cs231n/datasets*" "*.ipynb_checkpoints*" "*README.md" "*collectSubmission.sh" "*requirements.txt" ".env/*" "*.pyc" "*cs231n/build/*"
+zip -r assignment3.zip . -x "*.git/*" "*cs231n/datasets/coco_captioning*" "*cs231n/datasets/imagenet*" "*cs231n/datasets/squeezenet*" "*cs231n/datasets/MNIST_data*" "*.ipynb_checkpoints*" ".env/*" "*__pycache__*" "*cs231n/build/*"

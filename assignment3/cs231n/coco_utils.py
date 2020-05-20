@@ -2,6 +2,7 @@ from builtins import range
 import os, json
 import numpy as np
 import h5py
+import urllib.request, urllib.error
 
 BASE_DIR = 'cs231n/datasets/coco_captioning'
 
@@ -83,3 +84,16 @@ def sample_coco_minibatch(data, batch_size=100, split='train'):
     image_features = data['%s_features' % split][image_idxs]
     urls = data['%s_urls' % split][image_idxs]
     return captions, image_features, urls
+
+def sample_coco_minibatch_valid_urls(data, batch_size=2, split='train', num_tries=10):
+    for _ in range(num_tries):
+        try:
+            captions, image_features, urls = sample_coco_minibatch(data, batch_size, split)
+            for url in urls:
+                urllib.request.urlopen(url)
+            return captions, image_features, urls
+        except urllib.error.URLError as e:
+            print('URL Error:', e.reason, url)
+        except urllib.error.HTTPError as e:
+            print('HTTP Error:', e.code, url)
+    raise urllib.error.URLError('No valid url batch found')
