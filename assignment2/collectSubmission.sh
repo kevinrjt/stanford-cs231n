@@ -14,4 +14,4 @@ do
 done
 
 rm -f assignment2.zip
-zip -r assignment2.zip . -x "*.git*" "*cs231n/datasets*" "*.ipynb_checkpoints*" "*README.md" "*collectSubmission.sh" "*requirements.txt" ".env/*" "*.pyc" "*cs231n/build/*"
+zip -r assignment2.zip . -x "*.git/*" "*cs231n/datasets/cifar-10-batches-py*" "*.ipynb_checkpoints*" ".env/*" "*__pycache__*" "*cs231n/build/*" "*.so" "*.c"
